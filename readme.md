@@ -1,33 +1,37 @@
-# PPOB Pembayaran Listrik
-Aplikasi ini berfungsi untuk membayar listrik dengan pernatara website dan bank.
+# Aplikasi management restoran
+Aplikasi ini berfungsi untuk memanagement restoran sesuai soal dari dinas pendidikan
 
 *******************
 Role User
 *******************
-| Fitur           | Administrator   | Pelanggan           | Bank |
-| :-------------|:---------------:| :-------------:| :---:
-| Login           |X|X|X|
-| Logout          |X|X|X|
-| Registrasi          |X|X||
-| Pengelolaan Data Pelanggan          |X|||
-| Verifikasi dan Validasi (on process)    |X||X|
-| Pembayaran  (on process)          ||X||
-| Generate Laporan   (on process)        |X||X|
+| Fitur           | Administrator   | Waiter  | Kasir | Owner | Pelanggan |
+| :-------------|:---------------:| :-------------:| :---: | :--: | :--: |
+| Login            |X|X|X|X|X|
+| Logout           |X|X|X|X|X|
+| Registrasi       |X|X||X|||
+| Entri Referensi  |X|||||
+| Entri Order      |X||X|||X|
+| Entri Transaksi  |X||X|||
+| Generate Laporan |X|X|X|X||
 
 *******************
 Akun Login
 *******************
-Url Admin : `YOUR_SERVER`/`PROJECT_NAME`/admin
-	email = admin1@admin.com
+Url Admin : `YOUR_SERVER`/`PROJECT_NAME`/login
+	uername = admin
 	password = admin123
 
-Url Pelanggan : `YOUR_SERVER`/`PROJECT_NAME`
-	email = irfan@gmail.com
-	password = irfan123
+Url Waiter : `YOUR_SERVER`/`PROJECT_NAME`/login
+	uername = writer
+	password = writer
 
-Url Bank : `YOUR_SERVER`/`PROJECT_NAME`/admin
-	email = bank1@bank.com
-	password = bank123
+Url Kasir : `YOUR_SERVER`/`PROJECT_NAME`/login
+	uername = kasir
+	password = kasir123
+
+Url Owner : `YOUR_SERVER`/`PROJECT_NAME`/login
+	uername = owner
+	password = owner123
 
 *******************
 What is CodeIgniter
