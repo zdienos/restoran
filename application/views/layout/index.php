@@ -81,6 +81,13 @@
 						<a class="<?=($hal=='masakan')?'active':''?>" href="<?=base_url('masakan')?>" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="fa fa-cutlery mr-20"></i><span class="right-nav-text">Daftar Masakan</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 					</li>
 				<?php endif ?>
+				<?php if ($this->session->userdata('user_id_level')==1 || 
+				          $this->session->userdata('user_id_level') == 2 || 
+				          $this->session->userdata('user_id_level')== 5): ?>
+					<li>
+						<a class="<?=($hal=='order')?'active':''?>" href="<?=base_url('order')?>" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="fa  fa-plus mr-20"></i><span class="right-nav-text">Order</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+					</li>
+				<?php endif ?>
 			</ul>
 		</div>
 		<!-- /Left Sidebar Menu -->
