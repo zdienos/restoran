@@ -12,7 +12,7 @@ class M_masakan extends CI_Model {
 	    ['field' => 'harga',
 	      'label' => 'Harga',
 	      'rules' => 'required|numeric'],	      	    
-	    ['field' => 'status',
+	    ['field' => 'id_status_masakan',
 	      'label' => 'Status',
 	      'rules' => 'required']
 	  ];
@@ -24,13 +24,13 @@ class M_masakan extends CI_Model {
 		return array(               	      
 	      'nama_masakan' => form_error('nama_masakan'),	      
 	      'harga' => form_error('harga'),
-	      'status' => form_error('status'),	      
+	      'id_status_masakan' => form_error('id_status_masakan'),	      
 	    );
 	}
 
 	public function getAll()
 	{
-		return $this->db->get("masakan")->result();
+		return $this->db->join('status_masakan','status_masakan.id_status_masakan=masakan.id_status_masakan')->get("masakan")->result();
 	}
 
 	public function getById($id)
@@ -52,6 +52,11 @@ class M_masakan extends CI_Model {
 	{
 		return $this->db->where('id_masakan', $id)->delete('masakan');
 	}	
+
+	public function getStatus()
+	{
+		return $this->db->get('status_masakan')->result();
+	}
 
 }
 

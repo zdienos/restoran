@@ -78,7 +78,7 @@
 						<a class="<?=($hal=='user')?'active':''?>" href="<?=base_url('user')?>" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="icon-user mr-20"></i><span class="right-nav-text">Daftar User</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 					</li>
 					<li>
-						<a class="<?=($hal=='masakan')?'active':''?>" href="<?=base_url('masakan')?>" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="pe-7s-wine mr-20"></i><span class="right-nav-text">Daftar Masakan</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+						<a class="<?=($hal=='masakan')?'active':''?>" href="<?=base_url('masakan')?>" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="fa fa-cutlery mr-20"></i><span class="right-nav-text">Daftar Masakan</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 					</li>
 				<?php endif ?>
 			</ul>

@@ -17,7 +17,12 @@
 				</div>
 				<div class="form-group">
 					<label class="control-label mb-10 text-left">Status</label>
-					<input type="text" class="form-control" id="input-status" placeholder="Status"  name="status">
+					<select name="id_status_masakan" id="input-id_status_masakan" class="form-control">
+						<option value="" style="display:none;">Pilih Status</option>
+						<?php foreach ($data_status as $status): ?>
+							<option value="<?=$status->id_status_masakan?>"><?=$status->nama_status_masakan?></option>							
+						<?php endforeach ?>
+					</select>
 					<div class="help-block with-errors" id="error">
 					</div>
 				</div>								
@@ -42,7 +47,7 @@
 					<td><?=$i?></td>					
 					<td><?=$data->nama_masakan?></td>
 					<td><?=$data->harga?></td>					
-					<td><?=$data->status?></td>		
+					<td><?=$data->nama_status_masakan?></td>		
 					<td>
 						<a href="#" onclick="edit('<?=$data->id_masakan?>')" data-toggle="modal" data-target="#responsive-modal" class="btn btn-primary"><span class="fa fa-pencil"></span></a>						
 						<a href="<?=base_url('user/delete/'.$data->id_masakan)?>" class="btn btn-danger remove"><span class="fa fa-trash"></span></a>						
@@ -76,7 +81,12 @@
 				</div>
 				<div class="form-group">
 					<label class="control-label mb-10 text-left">Status</label>
-					<input type="text" class="form-control" id="edit-status" placeholder="Status"  name="status">
+					<select name="id_status_masakan" id="edit-id_status_masakan" class="form-control">
+						<option value="" style="display:none;">Pilih Status</option>
+						<?php foreach ($data_status as $status): ?>
+							<option value="<?=$status->id_status_masakan?>"><?=$status->nama_status_masakan?></option>							
+						<?php endforeach ?>
+					</select>
 					<div class="help-block with-errors" id="error">
 					</div>
 				</div>	
@@ -100,7 +110,7 @@
 				$("#edit-id_masakan").val(id);
 				$("#edit-nama_masakan").val(detail.nama_masakan);
 				$("#edit-harga").val(detail.harga);				
-				$("#edit-status").val(detail.status);
+				$("#edit-id_status_masakan").val(detail.id_status_masakan);
 			}
 		});
 	}

@@ -20,6 +20,7 @@ class Masakan extends CI_Controller {
 	{
 		$data['view'] = 'page/masakan/index';	
 		$data['dataAll'] = $this->masakan->getAll();
+		$data['data_status'] = $this->masakan->getStatus();
 		$data['judul'] = "<h2>Masakan</h2>";		
 		$data['validation'] = 'validation';
 		$this->load->view('layout/index', $data);
