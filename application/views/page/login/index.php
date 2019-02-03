@@ -58,8 +58,8 @@
 										<div class="form-wrap">
 											<form action="<?=$action?>" method="POST" id="form-add">
 												<div class="form-group">
-													<label class="control-label mb-10 text-left">Email</label>
-													<input type="text" class="form-control" id="input-username" placeholder="Email"  name="username">
+													<label class="control-label mb-10 text-left">Username</label>
+													<input type="text" class="form-control" id="input-username" placeholder="Username"  name="username">
 													<div class="help-block with-errors" id="error">
 													</div>
 												</div>
@@ -69,7 +69,7 @@
 													<div class="help-block with-errors" id="error">
 													</div>
 												</div>
-																								
+												<div class="help-block with-errors" id="false"></div>
 												<div class="form-group text-center">
 													<button type="submit" class="btn btn-info btn-success btn-rounded">sign in</button>
 												</div>

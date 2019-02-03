@@ -45,7 +45,7 @@
 		<div class="panel panel-default card-view">
 			<table class="table">
 				<tr>
-					<th>No</th><th>Nama User</th><th>Username</th><th>Level</th><th>Aksi</th>
+					<th>No</th><th>Nama User</th><th>Username</th><th>Level</th><th>Status</th><th>Aksi</th>
 				</tr>
 				<?php $i=0; foreach ($dataAll as $data): $i++; ?>
 				<tr>
@@ -54,6 +54,7 @@
 					<td><?=$data->nama_user?></td>
 					<td><?=$data->username?></td>					
 					<td><?=$data->nama_level?></td>		
+					<td><?=$active[$data->active]?></td>	
 					<td>
 						<a href="#" onclick="edit('<?=$data->id_user?>')" data-toggle="modal" data-target="#responsive-modal" class="btn btn-primary"><span class="fa fa-pencil"></span></a>
 						<?php if ($data->id_user != 1): ?>
@@ -98,6 +99,16 @@
 					<div class="help-block with-errors" id="error">
 					</div>
 				</div>
+				<div class="form-group">
+					<label class="control-label mb-10" for="exampleInputuname_1">Status</label>					
+					<select name="active" id="edit-active" class="form-control">
+						<option value="" style="display:none;">Pilih Status</option>
+						<option value="1">Active</option>
+						<option value="0">Not Active</option>
+					</select>
+					<div class="help-block with-errors" id="error">
+					</div>
+				</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" onclick="closeModal()" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -114,12 +125,12 @@
 			type:"post",
 			url:"<?=base_url()?>user/edit_data/"+id,
 			dataType:"json",
-			success:function (detail) {		
-				console.log(detail);
+			success:function (detail) {						
 				$("#edit-id_user").val(id);
 				$("#edit-nama_user").val(detail.nama_user);
 				$("#edit-username").val(detail.username);				
 				$("#edit-id_level").val(detail.id_level);
+				$("#edit-active").val(detail.active);
 			}
 		});
 	}

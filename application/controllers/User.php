@@ -23,6 +23,10 @@ class User extends CI_Controller {
 		$data['judul'] = "<h2>User</h2>";
 		$data['data_level'] = $this->user->getlevel();
 		$data['validation'] = 'validation';
+		$data['active'] = array(
+			0 => 'Not Active', 
+			1 => 'Active', 
+		);
 		$this->load->view('layout/index', $data);
 		
 	}
@@ -36,7 +40,8 @@ class User extends CI_Controller {
 				$data['error'] = true;
 				$data['error_msg'] = $this->user->error_msg();
 			}else{
-				$object = array(		      	
+				$object = array(	
+					'active' => 1,
 					'nama_user' => $this->input->post('nama_user',true),		      	
 					'password' => md5($this->input->post('password',true)),		      	
 					'username' => $this->input->post('username',true),
@@ -72,6 +77,7 @@ class User extends CI_Controller {
 					'password' => $this->input->post('password',true),		      	
 					'username' => $this->input->post('username',true),
 					'id_level' => $this->input->post('id_level',true), 
+					'active' => $this->input->post('active',true)
 				);
 				$this->user->update($object,$this->input->post('id_user'));
 				$data['success'] = true;

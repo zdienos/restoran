@@ -28,10 +28,11 @@ $(document).ready(function() {
 						}
 						
 					});
-				}else if(data.wrong == true){
+				}else if(data.false == true){
+					$('#form-add input').parents('.form-group').addClass('has-error has-danger');		
 					$('#form-add').find(':submit').attr("disabled", false);
 					$('#form-add').find(':submit').html("Simpan");
-					$('#info').html(data.wrong_msg);			            	
+					$('#false').html(data.false_msg);			            	
 				}	
 			}
 		});
@@ -76,6 +77,7 @@ $(document).ready(function() {
 	});
 
 	$('#form-add input').on('keyup', function () { 
+		$('#false').html("");	
 		$(this).parents('.form-group').removeClass('has-error has-danger').addClass('has-success');		
 		$(this).parents('.form-group').find('#error').html(" ");		
   	});

@@ -60,7 +60,7 @@ class M_daftar extends CI_Model {
 
 	public function get_login()
     {
-        return $this->db->get_where('user',array('username' => $this->input->post('username'),'password' => md5($this->input->post('password'))));
+        return $this->db->get_where('user',array('active'=>1,'username' => $this->input->post('username'),'password' => md5($this->input->post('password'))));
     }
 
     public function get_loginAdmin()

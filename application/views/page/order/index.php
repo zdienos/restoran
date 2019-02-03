@@ -33,16 +33,7 @@
 					<label class="control-label mb-10 text-left">Keterangan</label>
 					<textarea name="keterangan" id="input-keterangan" class="form-control"></textarea>
 					<div class="help-block with-errors" id="error"></div>
-				</div>
-				<div class="form-group">
-					<label class="control-label mb-10 text-left">Status Order</label>
-					<select class="form-control" name="status_order" id="input-status_order">
-						<option value="" style="display: none;">Pilih Status</option>						
-						<option value="Baru Pesan">Baru Pesan</option>
-						<option value="Proses">Proses</option>
-					</select>
-					<div class="help-block with-errors" id="error"></div>
-				</div>
+				</div>				
 				<div class="form-group">				
 					<div class="input-group">
 						<button type="submit" id="button-submit" class="btn cur-p btn-primary">Tambah</button>
@@ -54,27 +45,34 @@
 	</div>	
 	<div class="col-md-8">
 		<div class="panel panel-default card-view">
+			<?php if (!$dataAll): ?>
+				<center>
+					<h5>Data tidak ditemukan</h5>
+				</center>
+				<br>
+			<?php else: ?>
 			<table class="table">
-				<tr>
-					<th>No</th><th>No Meja</th><th>Nama User</th><th>Tanggal</th><th>Status</th>
-				</tr>
-				<?php $i=0; foreach ($dataAll as $data): $i++; ?>
-				<tr>
-					<td hidden name="id_order" id="<?=$data->id_order?>"></td>
-					<td><?=$i?></td>					
-					<td><?=$data->no_meja?></td>
-					<td><?=$data->nama_user?></td>					
-					<td><?=$data->tanggal?></td>
-					<td><?=$data->status_order?></td>
-					<td>
-						<a href="#" onclick="edit('<?=$data->id_order?>')" data-toggle="modal" data-target="#responsive-modal" class="btn btn-primary"><span class="fa fa-pencil"></span></a>						
-						<a href="<?=base_url('user/delete/'.$data->id_order)?>" class="btn btn-danger remove"><span class="fa fa-trash"></span></a>						
-					</td>
-				</tr>
-			<?php endforeach ?>
-		</table>
+					<tr>
+						<th>No</th><th>No Meja</th><th>Nama User</th><th>Tanggal</th><th>Status</th>
+					</tr>
+					<?php $i=0; foreach ($dataAll as $data): $i++; ?>
+					<tr>
+						<td hidden name="id_order" id="<?=$data->id_order?>"></td>
+						<td><?=$i?></td>					
+						<td><?=$data->no_meja?></td>
+						<td><?=$data->nama_user?></td>					
+						<td><?=$data->tanggal?></td>
+						<td><?=$status_order[$data->status_order]?></td>
+						<td>
+							<a href="#" onclick="edit('<?=$data->id_order?>')" data-toggle="modal" data-target="#responsive-modal" class="btn btn-primary"><span class="fa fa-pencil"></span></a>						
+							<a href="<?=base_url('order/delete/'.$data->id_order)?>" class="btn btn-danger remove"><span class="fa fa-trash"></span></a>						
+						</td>
+					</tr>
+				<?php endforeach ?>
+			</table>
+			<?php endif ?>
+		</div>
 	</div>
-</div>
 </div>
 <div id="responsive-modal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; padding-right: 17px;">
 	<div class="modal-dialog">
@@ -84,33 +82,36 @@
 				<h5 class="modal-title">Edit</h5>
 			</div>
 			<div class="modal-body">
-				<form action="<?=base_url('masakan/ubah')?>" method="POST" id="form-edit">					
+				<form action="<?=base_url('order/ubah')?>" method="POST" id="form-edit">					
 				<div class="form-group">
-					<label class="control-label mb-10 text-left">Nama Masakan</label>
-					<input type="text" class="form-control" id="edit-nama_masakan" placeholder="Nasi Goreng"  name="nama_masakan">
-					<div class="help-block with-errors" id="error">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label mb-10 text-left">Harga</label>
-					<input type="text" class="form-control" id="edit-harga" placeholder="Harga"  name="harga">
-					<div class="help-block with-errors" id="error">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label mb-10 text-left">Status</label>
-					<select name="id_status_masakan" id="edit-id_status_masakan" class="form-control">
-						<option value="" style="display:none;">Pilih Status</option>
-						<?php foreach ($data_status as $status): ?>
-							<option value="<?=$status->id_status_masakan?>"><?=$status->nama_status_masakan?></option>							
+					<label class="control-label mb-10 text-left">No Meja</label>
+					<?php if (!$data_meja): ?>
+						<input type="text" class="form-control" id="edit-id_meja" disabled="" name="id_meja">
+					<?php else: ?>
+					<select class="form-control" name="id_meja" id="edit-id_meja">
+						<option value="" style="display: none;">Pilih Meja</option>
+						<?php foreach ($data_meja as $meja): ?>
+							<option value="<?=$meja->id_meja?>"><?=$meja->no_meja?> - (<?=$meja->kapasitas?> orang) <?=$meja->status_meja?>
+							</option>
 						<?php endforeach ?>
 					</select>
+					<?php endif ?>
+				</div>
+				<div class="form-group">
+					<label class="control-label mb-10 text-left">Tanggal</label>
+					<input type="date" class="form-control" id="edit-tanggal" placeholder="Harga"  name="tanggal">
 					<div class="help-block with-errors" id="error">
 					</div>
-				</div>	
+				</div>
+					<div class="form-group">
+					<label class="control-label mb-10 text-left">Keterangan</label>
+					<textarea name="keterangan" id="edit-keterangan" class="form-control"></textarea>
+					<div class="help-block with-errors" id="error"></div>
+				</div>			
 				<div class="modal-footer">
 					<button type="button" onclick="closeModal()" class="btn btn-default" data-dismiss="modal">Close</button>
-					<input type="hidden" name="id_masakan" id="edit-id_masakan">
+					<input type="hidden" name="id_order" id="edit-id_order">
+					<input type="hidden" name="id_user" id="edit-id_user">
 					<button type="submit" class="btn btn-danger">Save changes</button>
 				</div>
 			</form>
@@ -121,14 +122,16 @@
 	function edit(id) {
 		$.ajax({
 			type:"post",
-			url:"<?=base_url()?>masakan/edit_data/"+id,
+			url:"<?=base_url()?>order/edit_data/"+id,
 			dataType:"json",
 			success:function (detail) {		
 				console.log(detail);
-				$("#edit-id_masakan").val(id);
-				$("#edit-nama_masakan").val(detail.nama_masakan);
-				$("#edit-harga").val(detail.harga);				
-				$("#edit-id_status_masakan").val(detail.id_status_masakan);
+				$("#edit-id_order").val(id);
+				$("#edit-id_user").val(detail.data.id_user);	
+				$("#edit-id_meja").val(detail.data.id_meja);	
+				$("#edit-id_meja").append(detail.data_meja);				
+				$("#edit-tanggal").val(detail.data.tanggal);		
+				$("#edit-keterangan").val(detail.data.keterangan);		
 			}
 		});
 	}

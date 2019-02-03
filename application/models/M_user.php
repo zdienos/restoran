@@ -17,7 +17,10 @@ class M_user extends CI_Model {
 	      'rules' => 'required'],	      	    
 	    ['field' => 'id_level',
 	      'label' => 'Level',
-	      'rules' => 'required']
+	      'rules' => 'required'],
+	    ['field' => 'active',
+	      'label' => 'Status',
+	      'rules' => ''],
 	  ];
 	}
 
@@ -35,7 +38,10 @@ class M_user extends CI_Model {
 	      'rules' => ''],	      	    
 	    ['field' => 'id_level',
 	      'label' => 'Level',
-	      'rules' => 'required']
+	      'rules' => 'required'],
+	    ['field' => 'active',
+	      'label' => 'Status',
+	      'rules' => 'required'],
 	  ];
 	}
 
@@ -46,6 +52,7 @@ class M_user extends CI_Model {
 	      'username' => form_error('username'),
 	      'password' => form_error('password'),
 	      'id_level' => form_error('id_level'),	      
+	      'active' => form_error('active'),
 	    );
 	}
 

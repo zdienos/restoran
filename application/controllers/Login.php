@@ -44,7 +44,7 @@ class Login extends CI_Controller {
 					$data['success'] = true;
 				}else{
 					$data['false']=true;
-					$data['false_message']='Email/Password Salah';
+					$data['false_msg']='Username/Password Salah';
 				}
 			}
 			echo json_encode($data);

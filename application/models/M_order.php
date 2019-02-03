@@ -20,7 +20,7 @@ class M_order extends CI_Model {
 	      'rules' => ''],
 	    ['field' => 'status_order',
 	      'label' => 'Status Order',
-	      'rules' => 'required'],
+	      'rules' => ''],
 	  ];
 	}
 
@@ -49,14 +49,44 @@ class M_order extends CI_Model {
 		return $this->db->where('status_meja','kosong')->get('meja')->result();
 	}
 
+	public function getSelectedMeja($id)
+	{
+		$meja = $this->db->select('id_meja')->where('id_order',$id)->get('order')->row();
+		return $this->db->where('id_meja',$meja->id_meja)->get('meja')->row();
+	}
+
+	public function getById($id)
+	{
+		return $this->db->where('id_order',$id)->get('order')->row();
+	}
+
 	public function getUser()
 	{
-		return $this->db->where('id_level','5')->get('user')->result();
+		return $this->db->where('id_level','5')->where('active',1)->get('user')->result();
 	}
 
 	public function add($object)
 	{
-		$this->db->insert('order', $object);
+		$meja = array(
+			'status_meja' => 'Terisi', 
+		);
+		$this->db->where('id_meja',$object['id_meja'])->update('meja', $meja);
+		return $this->db->insert('order', $object);
+	}
+
+	public function delete($id)
+	{
+		return $this->db->where('id_order',$id)->delete('order');
+	}
+
+	public function updateMeja($object,$id_meja)
+	{
+		return $this->db->where('id_meja',$id_meja)->update('meja', $object);
+	}
+
+	public function update($object,$id_order)
+	{
+		return $this->db->where('id_order',$id_order)->update('order', $object);
 	}
 }
 
