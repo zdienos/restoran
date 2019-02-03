@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2019 at 09:58 AM
+-- Generation Time: Feb 03, 2019 at 12:32 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.5.35
 
@@ -120,7 +120,7 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id_order`, `id_meja`, `id_user`, `tanggal`, `keterangan`, `status_order`) VALUES
-(6, 1, 9, '2011-02-20', 'a', '1');
+(6, 1, 9, '2019-02-03', 'b', '1');
 
 -- --------------------------------------------------------
 
@@ -176,7 +176,6 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `nama_user`, `id_level`, `active`) VALUES
 (1, 'admin', '0192023a7bbd73250516f069df18b500', 'Administrator', 1, 1),
-(2, 'waiter', 'e82d611b52164e7474fd1f3b6d2c68db', 'Waiter', 2, 1),
 (3, 'kasir', 'de28f8f7998f23ab4194b51a6029416f', 'Kasir', 3, 1),
 (4, 'owner', '5be057accb25758101fa5eadbbd79503', 'Owner', 4, 1),
 (9, 'pelanggan1', '', 'Pelanggan 1', 5, 1);
@@ -267,7 +266,7 @@ ALTER TABLE `masakan`
 -- AUTO_INCREMENT for table `meja`
 --
 ALTER TABLE `meja`
-  MODIFY `id_meja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_meja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `order`
