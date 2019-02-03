@@ -77,45 +77,45 @@
 			<div class="modal-body">
 				<form action="<?=base_url('user/ubah')?>" method="POST" id="form-edit">					
 					<div class="form-group">
-					<label class="control-label mb-10 text-left">Nama User</label>
-					<input type="text" class="form-control" id="edit-nama_user" placeholder="Irfan Hakim"  name="nama_user">
-					<div class="help-block with-errors" id="error">
+						<label class="control-label mb-10 text-left">Nama User</label>
+						<input type="text" class="form-control" id="edit-nama_user" placeholder="Irfan Hakim"  name="nama_user">
+						<div class="help-block with-errors" id="error">
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label mb-10 text-left">Username</label>
-					<input type="text" class="form-control" id="edit-username" placeholder="Username"  name="username">
-					<div class="help-block with-errors" id="error">
+					<div class="form-group">
+						<label class="control-label mb-10 text-left">Username</label>
+						<input type="text" class="form-control" id="edit-username" placeholder="Username"  name="username">
+						<div class="help-block with-errors" id="error">
+						</div>
+					</div>				
+					<div class="form-group">
+						<label class="control-label mb-10" for="exampleInputuname_1">Level</label>					
+						<select name="id_level" id="edit-id_level" class="form-control">
+							<option value="" style="display:none;">Pilih Level</option>
+							<?php foreach ($data_level as $level): ?>
+								<option value="<?=$level->id_level?>"><?=$level->nama_level?></option>
+							<?php endforeach ?>
+						</select>
+						<div class="help-block with-errors" id="error">
+						</div>
 					</div>
-				</div>				
-				<div class="form-group">
-					<label class="control-label mb-10" for="exampleInputuname_1">Level</label>					
-					<select name="id_level" id="edit-id_level" class="form-control">
-						<option value="" style="display:none;">Pilih Level</option>
-						<?php foreach ($data_level as $level): ?>
-							<option value="<?=$level->id_level?>"><?=$level->nama_level?></option>
-						<?php endforeach ?>
-					</select>
-					<div class="help-block with-errors" id="error">
+					<div class="form-group">
+						<label class="control-label mb-10" for="exampleInputuname_1">Status</label>					
+						<select name="active" id="edit-active" class="form-control">
+							<option value="" style="display:none;">Pilih Status</option>
+							<option value="1">Active</option>
+							<option value="0">Not Active</option>
+						</select>
+						<div class="help-block with-errors" id="error">
+						</div>
+					</div>				
+					<div class="modal-footer">
+						<button type="button" onclick="closeModal()" class="btn btn-default" data-dismiss="modal">Close</button>
+						<input type="hidden" name="id_user" id="edit-id_user">
+						<button type="submit" class="btn btn-danger">Save changes</button>
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label mb-10" for="exampleInputuname_1">Status</label>					
-					<select name="active" id="edit-active" class="form-control">
-						<option value="" style="display:none;">Pilih Status</option>
-						<option value="1">Active</option>
-						<option value="0">Not Active</option>
-					</select>
-					<div class="help-block with-errors" id="error">
-					</div>
-				</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" onclick="closeModal()" class="btn btn-default" data-dismiss="modal">Close</button>
-					<input type="hidden" name="id_user" id="edit-id_user">
-					<button type="submit" class="btn btn-danger">Save changes</button>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>

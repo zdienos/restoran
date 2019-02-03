@@ -50,7 +50,7 @@
 					<td><?=$data->nama_status_masakan?></td>		
 					<td>
 						<a href="#" onclick="edit('<?=$data->id_masakan?>')" data-toggle="modal" data-target="#responsive-modal" class="btn btn-primary"><span class="fa fa-pencil"></span></a>						
-						<a href="<?=base_url('user/delete/'.$data->id_masakan)?>" class="btn btn-danger remove"><span class="fa fa-trash"></span></a>						
+						<a href="<?=base_url('masakan/delete/'.$data->id_masakan)?>" class="btn btn-danger remove"><span class="fa fa-trash"></span></a>						
 					</td>
 				</tr>
 			<?php endforeach ?>
@@ -67,35 +67,36 @@
 			</div>
 			<div class="modal-body">
 				<form action="<?=base_url('masakan/ubah')?>" method="POST" id="form-edit">					
-				<div class="form-group">
-					<label class="control-label mb-10 text-left">Nama Masakan</label>
-					<input type="text" class="form-control" id="edit-nama_masakan" placeholder="Nasi Goreng"  name="nama_masakan">
-					<div class="help-block with-errors" id="error">
+					<div class="form-group">
+						<label class="control-label mb-10 text-left">Nama Masakan</label>
+						<input type="text" class="form-control" id="edit-nama_masakan" placeholder="Nasi Goreng"  name="nama_masakan">
+						<div class="help-block with-errors" id="error">
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label mb-10 text-left">Harga</label>
-					<input type="text" class="form-control" id="edit-harga" placeholder="Harga"  name="harga">
-					<div class="help-block with-errors" id="error">
+					<div class="form-group">
+						<label class="control-label mb-10 text-left">Harga</label>
+						<input type="text" class="form-control" id="edit-harga" placeholder="Harga"  name="harga">
+						<div class="help-block with-errors" id="error">
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label mb-10 text-left">Status</label>
-					<select name="id_status_masakan" id="edit-id_status_masakan" class="form-control">
-						<option value="" style="display:none;">Pilih Status</option>
-						<?php foreach ($data_status as $status): ?>
-							<option value="<?=$status->id_status_masakan?>"><?=$status->nama_status_masakan?></option>							
-						<?php endforeach ?>
-					</select>
-					<div class="help-block with-errors" id="error">
+					<div class="form-group">
+						<label class="control-label mb-10 text-left">Status</label>
+						<select name="id_status_masakan" id="edit-id_status_masakan" class="form-control">
+							<option value="" style="display:none;">Pilih Status</option>
+							<?php foreach ($data_status as $status): ?>
+								<option value="<?=$status->id_status_masakan?>"><?=$status->nama_status_masakan?></option>							
+							<?php endforeach ?>
+						</select>
+						<div class="help-block with-errors" id="error">
+						</div>
+					</div>	
+					<div class="modal-footer">
+						<button type="button" onclick="closeModal()" class="btn btn-default" data-dismiss="modal">Close</button>
+						<input type="hidden" name="id_masakan" id="edit-id_masakan">
+						<button type="submit" class="btn btn-danger">Save changes</button>
 					</div>
-				</div>	
-				<div class="modal-footer">
-					<button type="button" onclick="closeModal()" class="btn btn-default" data-dismiss="modal">Close</button>
-					<input type="hidden" name="id_masakan" id="edit-id_masakan">
-					<button type="submit" class="btn btn-danger">Save changes</button>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>

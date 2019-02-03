@@ -11,9 +11,6 @@
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
-	
-	<!-- Morris Charts CSS -->
-    <link href="<?=base_url('assets/vendors')?>/bower_components/morris.js/morris.css" rel="stylesheet" type="text/css"/>
 
     <link href="<?=base_url('assets/vendors')?>/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 	
@@ -85,7 +82,10 @@
 				          $this->session->userdata('user_id_level') == 2 || 
 				          $this->session->userdata('user_id_level')== 5): ?>
 					<li>
-						<a class="<?=($hal=='order')?'active':''?>" href="<?=base_url('order')?>" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="fa  fa-plus mr-20"></i><span class="right-nav-text">Order</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+						<a class="<?=($hal=='order')?'active':''?>" href="<?=base_url('order')?>" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class=" icon-note mr-20"></i><span class="right-nav-text">Order</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+					</li>
+					<li>
+						<a class="<?=($hal=='meja')?'active':''?>" href="<?=base_url('meja')?>" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="ti-archive mr-20"></i><span class="right-nav-text">Meja</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 					</li>
 				<?php endif ?>
 			</ul>
@@ -178,40 +178,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?=base_url('assets/vendors')?>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    
-	<!-- Data table JavaScript -->
-	<script src="<?=base_url('assets/vendors')?>/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-	
-	<!-- Slimscroll JavaScript -->
-	<script src="<?=base_url('assets/dist')?>/js/jquery.slimscroll.js"></script>
-	
-	<!-- simpleWeather JavaScript -->
-	<script src="<?=base_url('assets/vendors')?>/bower_components/moment/min/moment.min.js"></script>
-	<script src="<?=base_url('assets/vendors')?>/bower_components/simpleWeather/jquery.simpleWeather.min.js"></script>
-	<script src="<?=base_url('assets/dist')?>/js/simpleweather-data.js"></script>
-	
-	<!-- Progressbar Animation JavaScript -->
-	<script src="<?=base_url('assets/vendors')?>/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
-	<script src="<?=base_url('assets/vendors')?>/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
-	
-	<!-- Fancy Dropdown JS -->
-	<script src="<?=base_url('assets/dist')?>/js/dropdown-bootstrap-extended.js"></script>
-	
-	<!-- Sparkline JavaScript -->
-	<script src="<?=base_url('assets/vendors')?>/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
-	
-	<!-- Owl JavaScript -->
-	<script src="<?=base_url('assets/vendors')?>/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-	
-	<!-- ChartJS JavaScript -->
-	<script src="<?=base_url('assets/vendors')?>/chart.js/Chart.min.js"></script>
-	
-	<!-- Morris Charts JavaScript -->
-    <script src="<?=base_url('assets/vendors')?>/bower_components/raphael/raphael.min.js"></script>
-    <script src="<?=base_url('assets/vendors')?>/bower_components/morris.js/morris.min.js"></script>    
-	
-	<!-- Switchery JavaScript -->
-	<script src="<?=base_url('assets/vendors')?>/bower_components/switchery/dist/switchery.min.js"></script>
 	
 	
 

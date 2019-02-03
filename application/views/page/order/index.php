@@ -83,38 +83,39 @@
 			</div>
 			<div class="modal-body">
 				<form action="<?=base_url('order/ubah')?>" method="POST" id="form-edit">					
-				<div class="form-group">
-					<label class="control-label mb-10 text-left">No Meja</label>
-					<?php if (!$data_meja): ?>
-						<input type="text" class="form-control" id="edit-id_meja" disabled="" name="id_meja">
-					<?php else: ?>
-					<select class="form-control" name="id_meja" id="edit-id_meja">
-						<option value="" style="display: none;">Pilih Meja</option>
-						<?php foreach ($data_meja as $meja): ?>
-							<option value="<?=$meja->id_meja?>"><?=$meja->no_meja?> - (<?=$meja->kapasitas?> orang) <?=$meja->status_meja?>
-							</option>
-						<?php endforeach ?>
-					</select>
-					<?php endif ?>
-				</div>
-				<div class="form-group">
-					<label class="control-label mb-10 text-left">Tanggal</label>
-					<input type="date" class="form-control" id="edit-tanggal" placeholder="Harga"  name="tanggal">
-					<div class="help-block with-errors" id="error">
-					</div>
-				</div>
 					<div class="form-group">
-					<label class="control-label mb-10 text-left">Keterangan</label>
-					<textarea name="keterangan" id="edit-keterangan" class="form-control"></textarea>
-					<div class="help-block with-errors" id="error"></div>
-				</div>			
-				<div class="modal-footer">
-					<button type="button" onclick="closeModal()" class="btn btn-default" data-dismiss="modal">Close</button>
-					<input type="hidden" name="id_order" id="edit-id_order">
-					<input type="hidden" name="id_user" id="edit-id_user">
-					<button type="submit" class="btn btn-danger">Save changes</button>
-				</div>
-			</form>
+						<label class="control-label mb-10 text-left">No Meja</label>
+						<?php if (!$data_meja): ?>
+							<input type="text" class="form-control" id="edit-id_meja" disabled="" name="id_meja">
+						<?php else: ?>
+						<select class="form-control" name="id_meja" id="edit-id_meja">
+							<option value="" style="display: none;">Pilih Meja</option>
+							<?php foreach ($data_meja as $meja): ?>
+								<option value="<?=$meja->id_meja?>"><?=$meja->no_meja?> - (<?=$meja->kapasitas?> orang) <?=$meja->status_meja?>
+								</option>
+							<?php endforeach ?>
+						</select>
+						<?php endif ?>
+					</div>
+					<div class="form-group">
+						<label class="control-label mb-10 text-left">Tanggal</label>
+						<input type="date" class="form-control" id="edit-tanggal" placeholder="Harga"  name="tanggal">
+						<div class="help-block with-errors" id="error">
+						</div>
+					</div>
+						<div class="form-group">
+						<label class="control-label mb-10 text-left">Keterangan</label>
+						<textarea name="keterangan" id="edit-keterangan" class="form-control"></textarea>
+						<div class="help-block with-errors" id="error"></div>
+					</div>			
+					<div class="modal-footer">
+						<button type="button" onclick="closeModal()" class="btn btn-default" data-dismiss="modal">Close</button>
+						<input type="hidden" name="id_order" id="edit-id_order">
+						<input type="hidden" name="id_user" id="edit-id_user">
+						<button type="submit" class="btn btn-danger">Save changes</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>
