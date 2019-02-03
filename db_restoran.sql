@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2019 at 02:08 PM
+-- Generation Time: Feb 03, 2019 at 09:58 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.5.35
 
@@ -47,6 +47,17 @@ CREATE TABLE `level` (
   `nama_level` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `level`
+--
+
+INSERT INTO `level` (`id_level`, `nama_level`) VALUES
+(1, 'administrator'),
+(2, 'waiter'),
+(3, 'kasir'),
+(4, 'owner'),
+(5, 'pelanggan');
+
 -- --------------------------------------------------------
 
 --
@@ -57,8 +68,15 @@ CREATE TABLE `masakan` (
   `id_masakan` int(11) NOT NULL,
   `nama_masakan` varchar(255) NOT NULL,
   `harga` varchar(255) NOT NULL,
-  `status` varchar(100) NOT NULL
+  `id_status_masakan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `masakan`
+--
+
+INSERT INTO `masakan` (`id_masakan`, `nama_masakan`, `harga`, `id_status_masakan`) VALUES
+(2, 'Nasi Goreng Kambing', '20000', '1');
 
 -- --------------------------------------------------------
 
@@ -69,8 +87,18 @@ CREATE TABLE `masakan` (
 CREATE TABLE `meja` (
   `id_meja` int(11) NOT NULL,
   `no_meja` int(11) NOT NULL,
+  `kapasitas` int(11) NOT NULL,
   `status_meja` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `meja`
+--
+
+INSERT INTO `meja` (`id_meja`, `no_meja`, `kapasitas`, `status_meja`) VALUES
+(1, 1, 4, 'Terisi'),
+(2, 2, 4, 'Terisi'),
+(3, 3, 4, 'Kosong');
 
 -- --------------------------------------------------------
 
@@ -83,8 +111,35 @@ CREATE TABLE `order` (
   `id_meja` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `tanggal` date NOT NULL,
+  `keterangan` text NOT NULL,
   `status_order` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`id_order`, `id_meja`, `id_user`, `tanggal`, `keterangan`, `status_order`) VALUES
+(6, 1, 9, '2011-02-20', 'a', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status_masakan`
+--
+
+CREATE TABLE `status_masakan` (
+  `id_status_masakan` int(11) NOT NULL,
+  `nama_status_masakan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `status_masakan`
+--
+
+INSERT INTO `status_masakan` (`id_status_masakan`, `nama_status_masakan`) VALUES
+(1, 'Ready'),
+(2, 'Not Ready');
 
 -- --------------------------------------------------------
 
@@ -111,8 +166,20 @@ CREATE TABLE `user` (
   `username` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `nama_user` varchar(255) NOT NULL,
-  `id_level` int(11) NOT NULL
+  `id_level` int(11) NOT NULL,
+  `active` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `username`, `password`, `nama_user`, `id_level`, `active`) VALUES
+(1, 'admin', '0192023a7bbd73250516f069df18b500', 'Administrator', 1, 1),
+(2, 'waiter', 'e82d611b52164e7474fd1f3b6d2c68db', 'Waiter', 2, 1),
+(3, 'kasir', 'de28f8f7998f23ab4194b51a6029416f', 'Kasir', 3, 1),
+(4, 'owner', '5be057accb25758101fa5eadbbd79503', 'Owner', 4, 1),
+(9, 'pelanggan1', '', 'Pelanggan 1', 5, 1);
 
 --
 -- Indexes for dumped tables
@@ -136,7 +203,8 @@ ALTER TABLE `level`
 -- Indexes for table `masakan`
 --
 ALTER TABLE `masakan`
-  ADD PRIMARY KEY (`id_masakan`);
+  ADD PRIMARY KEY (`id_masakan`),
+  ADD KEY `id_status` (`id_status_masakan`);
 
 --
 -- Indexes for table `meja`
@@ -151,6 +219,12 @@ ALTER TABLE `order`
   ADD PRIMARY KEY (`id_order`),
   ADD KEY `id_meja` (`id_meja`),
   ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `status_masakan`
+--
+ALTER TABLE `status_masakan`
+  ADD PRIMARY KEY (`id_status_masakan`);
 
 --
 -- Indexes for table `transaksi`
@@ -181,25 +255,31 @@ ALTER TABLE `detail_order`
 -- AUTO_INCREMENT for table `level`
 --
 ALTER TABLE `level`
-  MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `masakan`
 --
 ALTER TABLE `masakan`
-  MODIFY `id_masakan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_masakan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `meja`
 --
 ALTER TABLE `meja`
-  MODIFY `id_meja` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_meja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `status_masakan`
+--
+ALTER TABLE `status_masakan`
+  MODIFY `id_status_masakan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
@@ -211,7 +291,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
